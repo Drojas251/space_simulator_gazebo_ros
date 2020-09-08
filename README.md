@@ -18,6 +18,10 @@ Build using catkin_make
   $ cd ..
   $ catkin_make
   ```
+
+Install 
+  $ sudo apt-get install ros-kinetic-ros-control ros-kinetic-ros-controllers
+
 ## modifications 
 
 Go to robotiq/robotiq_description/urdf/robotiq_85_gripper.transmission.xacro
