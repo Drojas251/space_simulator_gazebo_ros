@@ -2,6 +2,11 @@
 <robot name="ur5" xmlns:xacro="http://www.ros.org/wiki/xacro">
   <xacro:include filename="$(find robot_description)/urdf/ur5_above_manipulation_joint_limited_robot.urdf.xacro" />
 
+<!-- This urdf file is called from ur5_above_manipulation_setup.launch -->
+<!-- allows the user to enter the argument 'nut' -->
+<!-- if nut = true, then UR5 will be equipped with a nutdriver -->
+<!-- if nut == false (default) then UR5 will be equipped with a gripper -->
+
   <xacro:arg name="nut" default="false" />
   <xacro:property name="nut" value="$(arg nut)" />
 
@@ -33,7 +38,7 @@
     </joint>
 
 
-<!-- Vaccumm -->
+<!-- Attach Vaccuum grippers to the tip of the nutdriver -->
 
     <link name="vacuum_gripper">
       <gravity>0</gravity>
@@ -75,7 +80,7 @@
       </plugin>
   </gazebo>
 
-<!-- second vacum -->
+<!-- second vacuum -->
 
     <link name="vacuum_gripper1">
       <gravity>0</gravity>
@@ -117,7 +122,7 @@
       </plugin>
   </gazebo> 
 
-<!-- third vacum -->
+<!-- third vacuum -->
 
     <link name="vacuum_gripper2">
       <gravity>0</gravity>
@@ -158,7 +163,8 @@
         <minDistance>0.01</minDistance>
       </plugin>
   </gazebo>  
-    </xacro:if>
+ </xacro:if>
+
     <xacro:unless value="$(arg nut)">
   <xacro:include filename="$(find robotiq_description)/urdf/robotiq_85_gripper.urdf.xacro" />
  <!-- Robotiq Coupler -->
@@ -195,14 +201,6 @@
     <material>Gazebo/FlatBlack</material>
   </gazebo>
   
-  <!-- Equivalent to the OpenRAVE manipulator denso_robotiq_85_gripper -->
-  <!-- <link name="denso_robotiq_85_gripper" /> -->
-  <!-- <joint name="manipulator_dummy_joint" type="fixed"> -->
-  <!--   <origin xyz="0 0 0.1441" rpy="0 0 0" /> -->
-  <!--   <parent link="robotiq_coupler"/> -->
-  <!--   <child link="denso_robotiq_85_gripper"/> -->
-  <!-- </joint> -->
-  
   <!-- Attach the robotiq 85 gripper -->
   <xacro:robotiq_85_gripper prefix="" parent="robotiq_coupler" >
     <origin xyz="0 0 0.004" rpy="0 ${-pi/2} ${pi}"/>
@@ -221,9 +219,9 @@
     </plugin>
   </gazebo>
   
-
-
   <!-- Gazebo grasping plugin -->
+<!-- $ git clone https://github.com/JenniferBuehler/general-message-pkgs.git
+$ git clone https://github.com/JenniferBuehler/gazebo-pkgs.git -->
 
 <gazebo>
    <plugin name="gazebo_grasp_fix" filename="libgazebo_grasp_fix.so">

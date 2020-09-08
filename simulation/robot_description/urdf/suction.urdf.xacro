@@ -321,33 +321,9 @@
       <origin xyz="0.0 ${wrist_3_length} 0.0" rpy="-1.5707 0.0 0.0" />
     </joint>
 
-<!--
-    <joint name="${prefix}ee_fixed_joint" type="fixed">
-      <parent link="${prefix}wrist_3_link" />
-      <child link = "${prefix}ee_link" />
-      <origin xyz="0.0 ${wrist_3_length} 0.0" rpy="0.0 0.0 ${pi/2.0}" />
-    </joint>
+<!-- Vaccuum elements put at the tip of the nutdriver to simulate magnetic tip -->
 
-    <link name="${prefix}ee_link">
-      <collision>
-        <geometry>
-          <box size="0.01 0.01 0.01"/>
-        </geometry>
-        <surface>
-          <friction>
-            <ode>
-              <mu>10</mu>
-              <mu2>10</mu2>
-            </ode>
-          </friction>
-        </surface>
-        <origin rpy="0 0 0" xyz="-0.01 0 0"/>
-      </collision>
-    </link>  -->
-
-
-<!-- Vaccumm -->
-
+<!-- First Vacuum -->
     <link name="vacuum_gripper">
       <gravity>0</gravity>
       <visual>
@@ -375,7 +351,7 @@
       <limit effort="50" velocity="50" lower="0" upper="0" />
       <dynamics damping="0.0" friction="10"/>
     </joint>
-
+<!-- Vaccuum plugin -->
  
   <gazebo>
       <plugin name="gazebo_ros_vacuum_gripper" filename="libgazebo_ros_vacuum_gripper.so">
@@ -388,7 +364,7 @@
       </plugin>
   </gazebo> 
 
-<!-- second vacum -->
+<!-- Second vacuum -->
 
     <link name="vacuum_gripper1">
       <gravity>0</gravity>
@@ -430,7 +406,7 @@
       </plugin>
   </gazebo> 
 
-<!-- third vacum -->
+<!-- Third vacuum -->
 
     <link name="vacuum_gripper2">
       <gravity>0</gravity>
@@ -472,7 +448,7 @@
       </plugin>
   </gazebo> 
 
-<!-- include RAIL -->
+<!-- 7th axis linear rail -->
 
 <link name = "rail">
 <visual>
@@ -498,7 +474,7 @@
     </inertial>
   </link>
 
-<!-- Include Stands  -->
+<!-- Stand to elevate the rail for above manipulation  -->
 <link name = "rail_leg_1">
 <visual>
       <origin rpy="0 0 0" xyz="3.8 0 0.625"/>

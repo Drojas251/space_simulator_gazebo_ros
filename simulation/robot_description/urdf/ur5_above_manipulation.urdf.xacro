@@ -311,7 +311,7 @@
     </link>
 
 
-<!-- include RAIL -->
+<!-- 7th axis linear rail -->
 
 <link name = "rail">
 <visual>
@@ -337,7 +337,7 @@
     </inertial>
   </link>
 
-<!-- Include Stands  -->
+<!-- Stands to elevate the rail for above manipulation  -->
 <link name = "rail_leg_1">
 <visual>
       <origin rpy="0 0 0" xyz="3.8 0 0.625"/>
