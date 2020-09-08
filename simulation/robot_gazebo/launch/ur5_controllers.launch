@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Launch file parameters -->
+  <arg name="debug"     default="false" />
+  <arg name="nut"     default="false" />
+
+  <arg if=      "$(arg debug)"  name="DEBUG" value="screen"/>
+  <arg unless = "$(arg debug)"  name="DEBUG" value="log"/>
+
+
+<group if="$(arg nut)">
+  <!-- stuff that will only be evaluated if foo is true -->
+  <!-- Controllers config -->
+  <rosparam file="$(find robot_gazebo)/controller/ur5_suction_controllers.yaml"
+            command="load" />
+
+  <!-- Load controllers -->
+  <node name="robot_controllers" pkg="controller_manager" type="spawner"
+        output="$(arg DEBUG)"
+        args="joint_state_controller trajectory_controller rail_controller"/>
+
+  <!-- TF -->
+  <node pkg="robot_state_publisher" type="state_publisher"
+        name="state_publisher">
+    <param name="publish_frequency"  type="double" value="50" />
+  </node>
+
+  <!--<include file="$(find move_it_above_magnet)/launch/demo_planning_execution.launch" /> -->
+</group> 
+
+
+<group unless="$(arg nut)">
+  <!-- stuff that will only be evaluated if foo is true -->
+
+  <!-- Controllers config -->
+  <rosparam file="$(find robot_gazebo)/controller/ur5gripper_controllers.yaml"
+            command="load" />
+
+  <!-- Load controllers -->
+  <node name="robot_controllers" pkg="controller_manager" type="spawner"
+        output="$(arg DEBUG)"
+        args="joint_state_controller trajectory_controller gripper_controller rail_controller"/>
+
+  <!-- TF -->
+  <node pkg="robot_state_publisher" type="state_publisher"
+        name="state_publisher">
+    <param name="publish_frequency"  type="double" value="50" />
+  </node>
+
+ <!-- Load the grasp fix plugin for gazebo -->
+  <arg name="load_grasp_fix" default="true"/>
+
+ <!-- <include file="$(find move_it_above_gripper)/launch/demo_planning_execution.launch" /> -->
+
+</group>
+
+
+
+
+</launch>

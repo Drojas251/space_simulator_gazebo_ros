@@ -1,0 +1,25 @@
+<?xml version='1.0'?>
+<sdf version='1.6'>
+  <model name="Bolt_holder">
+<static>true</static>
+<link name= "bolt_holder_link">
+<collision name= "bolt holder collision">
+ <geometry>
+   <mesh>
+     <uri>model://Bolt_holder/meshes/Bolt_holder.obj</uri>
+      <scale> 1 1 1 </scale>
+   </mesh>
+</geometry>
+
+</collision>
+<visual name = "visual bearing">
+  <geometry>
+   <mesh>
+     <uri>model://Bolt_holder/meshes/Bolt_holder.obj</uri>
+      <scale> 1 1 1 </scale>
+   </mesh>
+</geometry>
+</visual>
+</link>
+  </model>
+</sdf>

@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+
+<sdf version="1.6">
+  <model name="platform">
+    <static>true</static>
+
+
+
+
+
+    <link name="platform link 1">
+
+      <pose>0 0.0 0.2 0 0 0</pose>
+
+
+      <collision name="platform collision 1">
+        <geometry>
+          <box>
+            <size>1 0.4 0.4</size>
+          </box>
+        </geometry>
+      </collision>
+
+
+
+      <visual name="platform visual 1">
+        <geometry>
+          <box>
+            <size>1 0.4 0.4</size>
+          </box>
+        </geometry>
+
+
+      </visual>
+
+    </link>
+
+    <link name="platform link 2">
+
+      <pose>1.0 0.0 0.15 0 0 0</pose>
+
+
+      <collision name="platform collision 2">
+        <geometry>
+          <box>
+            <size>1 0.4 0.3</size>
+          </box>
+        </geometry>
+      </collision>
+
+
+
+      <visual name="platfrom visual 2">
+        <geometry>
+          <box>
+            <size>1 0.4 0.3</size>
+          </box>
+        </geometry>
+
+
+      </visual>
+
+    </link>
+
+    
+    
+
+
+
+
+
+  </model>
+</sdf>

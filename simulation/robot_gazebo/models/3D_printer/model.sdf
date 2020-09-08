@@ -1,0 +1,30 @@
+<?xml version='1.0'?>
+<sdf version='1.6'>
+  <model name="3D_printer">
+<static>true</static>
+<link name= "3D_printer">
+<collision name= "3D_printer collision">
+        
+ <geometry>
+   <mesh>
+     <uri>model://3D_printer/meshes/3D_printer_with_base_simplified.obj</uri>
+      <scale> 1 1 1</scale>
+   </mesh>
+</geometry>
+
+</collision>
+
+
+
+
+<visual name = "3D_printer bearing">
+  <geometry>
+   <mesh>
+     <uri>model://3D_printer/meshes/3D_printer_with_base_simplified.obj</uri>
+      <scale> 1 1 1</scale>
+   </mesh>
+</geometry>
+</visual>
+</link>
+  </model>
+</sdf>

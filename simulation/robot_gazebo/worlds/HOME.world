@@ -1,0 +1,202 @@
+<?xml version="1.0" ?>
+
+<sdf version="1.6">
+
+  <world name="ur5_cubes">
+    
+    <gui>
+      <camera name="user_camera">
+        <pose>1.4 -2.3 1.4 0.0 0.25 1.9</pose>
+      </camera>
+    </gui>
+
+    <gravity>0 0 0.0</gravity>
+
+    <physics name="default_physics" default="0" type="ode">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+
+    <!-- Light Source -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <!-- A ground plane -->
+    <include>
+      <uri>model://ground_plane</uri>
+      <pose>0 0 0 0 0 0</pose>
+    </include>
+
+    <!-- A gazebo links attacher for grasp Hack-->
+    <!-- <plugin name="ros_link_attacher_plugin" -->
+    <!--         filename="libgazebo_ros_link_attacher.so"/> -->
+
+	
+   <!-- Pillow block -->
+    <model name="pillow_block">
+      <include>
+        <uri>model://pillow_block</uri>
+        <pose>-1.25 0.5 0.3 0 0 1.57</pose>
+      </include>
+    </model> 
+
+
+   <!-- aircraft -->
+    <model name="aircraft">
+      <include>
+        <uri>model://aircraft</uri>
+        <pose>-5 2 0 0 0 1.57</pose>
+      </include>
+    </model> 
+
+
+
+   <!-- 3D_printer -->
+    <model name="3D_printer">
+      <include>
+        <uri>model://3D_printer</uri>
+        <pose> -0.05 0.8 -0.15 0 0 1.57</pose>
+      </include>
+    </model>
+
+   <!-- box -->
+    <model name="Platform 1">
+      <include>
+        <uri>model://platform</uri>
+        <pose> 0 -0.65 0 0 0 0</pose>
+      </include>
+    </model>
+
+   <!-- box -->
+    <model name="Platform 2">
+      <include>
+        <uri>model://platform</uri>
+        <pose> -2.5 0.6 0 0 0 0</pose>
+      </include>
+    </model>
+
+
+    <!-- cube -->
+    <model name="cube 1">
+      <include>
+        <uri>model://cube</uri>
+        <pose> -0.2 -0.5 0.4 0 0 0</pose>
+      </include>
+    </model>
+
+    <!-- cube -->
+    <model name="cube 2">
+      <include>
+        <uri>model://cube</uri>
+        <pose> 1 -0.65 0.3 0 0 0</pose>
+      </include>
+    </model>
+
+<!-- bolt holder -->
+    <model name="bolt_holder">
+      <include>
+        <uri>model://Bolt_holder</uri>
+        <pose> 0 -0.5 0.4 0 0 1.5707</pose>
+      </include>
+    </model>
+
+<!-- bolt -->
+    <model name="bolt">
+      <include>
+        <uri>model://Bolt</uri>
+        <pose> -0.02 -0.5 0.42 0 0 0</pose>
+      </include>
+    </model>
+
+
+
+   <!-- cap -->
+<model name="cap">
+<pose>0.0 0.65 0.41 0 0 1.57</pose>
+<static>false</static>
+<link name= "top">
+<pose> 0.0 0.0 0.022  0 0 0 </pose>
+    <inertial>
+        <mass>0.0565</mass>
+          
+<!-- for cast iron, mass = 0.6847
+        <inertia>
+           <ixx>5.2326e-04</ixx>
+           <ixy>-3e-10</ixy>
+           <ixz>8.27e-10</ixz>
+           <iyy>1.7126037e-04</iyy>
+           <iyz>-2.5e-7</iyz>
+           <izz>6.08125629e-04</izz>
+          </inertia> -->
+
+      <inertia>
+           <ixx>2.3541666666666672e-05</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>2.3541666666666672e-05</iyy>
+            <iyz>0</iyz>
+            <izz>2.3541666666666672e-05</izz>
+          </inertia>
+     </inertial> 
+<collision name= "top collision">
+<pose> 0.0 0.0 0.0  0 0 0 </pose>
+ <geometry>
+   
+    <mesh>
+     <uri>model://cap/meshes/plummer_block_cap.obj</uri>
+      <scale> 1 1 1 </scale>
+   </mesh>
+          
+ </geometry>
+ <surface>
+    <contact>
+         <poissons_ratio>0.347</poissons_ratio>
+              <elastic_modulus>8.8e+09</elastic_modulus>
+            <ode>
+              <kp>100000</kp>
+                <kd>1</kd>
+                <max_vel>1.0</max_vel>
+                <min_depth>0.001</min_depth>
+            </ode>
+      </contact>
+          <friction>
+            <ode>
+              <mu>1.0</mu>
+              <mu2>1.0</mu2>
+            </ode>
+          </friction>
+  </surface> 
+</collision>
+
+<visual name = "visual top">
+<pose> 0.0 0.0 0.0  0 0 0 </pose>
+  <geometry>
+   <mesh>
+     <uri>model://cap/meshes/plummer_block_cap.obj</uri>
+      <scale> 1 1 1 </scale>
+   </mesh>
+</geometry>
+<material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Wood</name>
+          </script>
+        </material>
+</visual>
+</link>
+  </model>
+
+
+
+
+  </world>
+
+</sdf>
