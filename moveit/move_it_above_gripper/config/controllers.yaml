@@ -1,0 +1,36 @@
+controller_list:
+  - name: "trajectory_controller"
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    joints:
+      - shoulder_pan_joint
+      - shoulder_lift_joint
+      - elbow_joint
+      - wrist_1_joint
+      - wrist_2_joint
+      - wrist_3_joint
+
+
+  - name: "gripper_controller"
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: true
+    joints:
+      - robotiq_85_left_knuckle_joint
+      
+  - name: "rail_controller"
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: true
+    joints:
+      - rail_joint
+
+
+
+# ------ for real gripper 
+#  - name: "gripper_controller"
+#    action_ns: gripper_cmd
+#    type: GripperCommand
+#    joints:
+#      - robotiq_85_left_knuckle_joint
+
