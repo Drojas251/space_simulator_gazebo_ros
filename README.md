@@ -10,7 +10,7 @@ This will assume that you already have a catkin workspace. Go to the source dire
   ```
 Clone this and the gripper (robotiq) repositories
   ```
-  $ git clone https://github.com/ravani-org/shr
+  $ git clone https://github.com/Drojas251/space_simulator_gazebo_ros.git
   $ git clone https://github.com/utecrobotics/robotiq
   $ git clone https://github.com/JenniferBuehler/general-message-pkgs.git
   $ git clone https://github.com/JenniferBuehler/gazebo-pkgs.git
